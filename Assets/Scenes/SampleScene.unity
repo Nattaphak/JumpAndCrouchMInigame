@@ -512,6 +512,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149814158}
   m_CullTransparentMesh: 1
+--- !u!1 &208506871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208506873}
+  - component: {fileID: 208506872}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &208506872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208506871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db80e15901f0d4b9a78047675856a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialGameSpeed: 5
+  gameSpeedIncrease: 0.1
+--- !u!4 &208506873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208506871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6135294, y: -0.93379587, z: -0.07892841}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &216826895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,10 +1200,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa33cf7d53c4c9841a3d624a4cf2431c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 2437169280760509778, guid: fd2213ea030d785458a8eaf466a2b348, type: 3}
-  minSpeed: 5
-  maxSpeed: 12
-  currentSpeed: 0
+  objects:
+  - prefeb: {fileID: 2437169280760509778, guid: fd2213ea030d785458a8eaf466a2b348, type: 3}
+    spawnChance: 0.2
+  - prefeb: {fileID: 9089947031335594603, guid: de4c1ef7dc5a02445a25e650464537f2, type: 3}
+    spawnChance: 0.1
+  - prefeb: {fileID: 3799693120621768513, guid: bcebadb5652545143a11c292d3de1606, type: 3}
+    spawnChance: 0.05
+  minSpawnRate: 1
+  maxSpawnRate: 2
 --- !u!212 &877829212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1258,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  jumpForce: 400
+  jumpForce: 300
   RB: {fileID: 888530195}
   isGrounded: 0
   isObstacle: 0
@@ -1364,7 +1415,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_FlipX: 0
@@ -1791,6 +1842,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 729460597}
   - {fileID: 1403214221}
+  - {fileID: 208506873}
   - {fileID: 877829213}
   - {fileID: 888530198}
   - {fileID: 216826899}

@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public Obstacle_Generator obstacleGenerator;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
+        transform.position += Vector3.left * GameManager.Instance.gameSpeed * Time.deltaTime;
+
+
+    }
+
+
+    // public Obstacle_Generator obstacleGenerator;
+
+    // void Start()
+    // {
         
-    }
+    // }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector2.left * obstacleGenerator.currentSpeed *  Time.deltaTime);
-    }
+    
+    // void Update()
+    // {
+    //     transform.Translate(Vector2.left * obstacleGenerator.currentSpeed *  Time.deltaTime);
+
+    // }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ObstacleCheckpoint"))
         {
-            obstacleGenerator.generateObstacle();
+            //obstacleGenerator.generateObstacle();
         }
 
         if (collision.gameObject.CompareTag("OutOfScreen"))
