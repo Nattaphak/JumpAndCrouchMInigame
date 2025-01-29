@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
+    [SerializeField] public Animator anim;
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody2D RB;
     public bool isGrounded = false;
+    public bool isJump = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isJump == true)
+        {
+            Jump();
+        }
     }
 
     public void Jump()
@@ -30,9 +34,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Crouch()
+    public void checkCrouchTrue()
     {
+        anim.SetBool("crouch" , true);
+    }
 
+    public void checkCrouchFalse()
+    {
+        anim.SetBool("crouch", false);
+    }
+
+    public void checkJumpTrue()
+    {
+        isJump = true;
+    }
+
+    public void checkJumpFalse()
+    {
+        isJump = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

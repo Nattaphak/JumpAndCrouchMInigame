@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PlayerCharacter;
     [SerializeField] private Transform positionPlayer;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject controllerButton;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text FinalScoreText;
 
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
 
         PlayerCharacter.SetActive(true);
         obstacleGenerator.gameObject.SetActive(true);
+        controllerButton.SetActive(true);
 
         gameOverPanel.SetActive(false);
     }
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         gameSpeed = 0f;
         enabled = false;
 
+        controllerButton.SetActive(false);
         obstacleGenerator.gameObject.SetActive(false);
 
         FinalScoreText.text = Mathf.FloorToInt(score).ToString("D6");
@@ -85,6 +88,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
+    {
+        scoreCount();
+    }
+
+    public void scoreCount()
     {
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
         score += gameSpeed * Time.deltaTime;
