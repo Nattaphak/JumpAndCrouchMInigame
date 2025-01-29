@@ -8,12 +8,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody2D RB;
     public bool isGrounded = false;
-    public bool isObstacle = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        isObstacle = false;
+
     }
 
     // Update is called once per frame
@@ -48,13 +47,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            if (isObstacle == false)
-            {
-                isGrounded = true;
-            }
-
-            GameManager.Instance.GameOver();
-
+         
         }
     }
 
