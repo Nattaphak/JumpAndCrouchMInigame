@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
                 isGrounded = true;
             }
 
+            GameManager.Instance.GameOver();
+
         }
     }
 
