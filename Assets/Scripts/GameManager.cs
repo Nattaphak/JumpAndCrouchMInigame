@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +12,15 @@ public class GameManager : MonoBehaviour
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
 
-
+    [SerializeField] private GameObject PlayerCharacter;
+    [SerializeField] private Transform positionPlayer;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text FinalScoreText;
 
-    private Player player;
     private Obstacle_Generator obstacleGenerator;
+
+    private float score;
 
     private void Awake()
     {
@@ -38,7 +44,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
         obstacleGenerator = FindObjectOfType<Obstacle_Generator>();
         NewGame();
     }
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         Time.timeScale = 1f;
+        score = 0;
 
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         foreach (var obstacle in obstacles) 
@@ -53,10 +59,12 @@ public class GameManager : MonoBehaviour
             Destroy(obstacle.gameObject);
         }
 
+        PlayerCharacter.transform.position = positionPlayer.position;
+
         gameSpeed = initialGameSpeed;
         enabled = true;
 
-        player.gameObject.SetActive(true);
+        PlayerCharacter.SetActive(true);
         obstacleGenerator.gameObject.SetActive(true);
 
         gameOverPanel.SetActive(false);
@@ -69,9 +77,9 @@ public class GameManager : MonoBehaviour
         gameSpeed = 0f;
         enabled = false;
 
-        //player.gameObject.SetActive(false);
         obstacleGenerator.gameObject.SetActive(false);
 
+        FinalScoreText.text = Mathf.FloorToInt(score).ToString("D6");
         gameOverPanel.SetActive(true);
 
     }
@@ -79,5 +87,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
+        score += gameSpeed * Time.deltaTime;
+        scoreText.text = Mathf.FloorToInt(score).ToString("D6");
     }
 }
