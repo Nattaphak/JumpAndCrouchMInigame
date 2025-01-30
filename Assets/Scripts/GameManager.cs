@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject controllerButton;
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject StartMenu;
+    [SerializeField] private GameObject pauseButton;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text FinalScoreText;
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         PlayerCharacter.SetActive(true);
         obstacleGenerator.gameObject.SetActive(true);
+        pauseButton.SetActive(true);
         controllerButton.SetActive(true);
 
         gameOverPanel.SetActive(false);
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
         gameSpeed = 0f;
         enabled = false;
 
+        pauseButton.SetActive(false);
         controllerButton.SetActive(false);
         obstacleGenerator.gameObject.SetActive(false);
 
@@ -97,7 +100,7 @@ public class GameManager : MonoBehaviour
     public void scoreCount()
     {
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
-        score += gameSpeed * Time.deltaTime;
+        score += gameSpeed * Time.deltaTime * 10;
         scoreText.text = Mathf.FloorToInt(score).ToString("D6");
     }
 
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
+        pauseButton.SetActive(true);
         controllerButton.SetActive(true);
         pauseMenuPanel.SetActive(false);
     }

@@ -894,7 +894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &381379992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1877,11 +1877,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - prefeb: {fileID: 2437169280760509778, guid: fd2213ea030d785458a8eaf466a2b348, type: 3}
+  - prefeb: {fileID: 5438837761144753200, guid: b8afacd37a6b1ed469b98eddaee2613f, type: 3}
     spawnChance: 0.3
   - prefeb: {fileID: 3633432501446194101, guid: c7a8915a3778f6c419ba6d328c7f31ee, type: 3}
     spawnChance: 0.2
-  - prefeb: {fileID: 6551280688200609462, guid: bcebadb5652545143a11c292d3de1606, type: 3}
+  - prefeb: {fileID: 7735741958870781965, guid: 5cbc1e59d12b3804cb842e980c3e7810, type: 3}
     spawnChance: 0.1
   minSpawnRate: 1
   maxSpawnRate: 2
@@ -2520,7 +2520,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -557555324, guid: 96020062c6cd0dc4a9f1da7f4861d972, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3473,6 +3473,7 @@ MonoBehaviour:
   controllerButton: {fileID: 381379991}
   pauseMenuPanel: {fileID: 1247784022}
   StartMenu: {fileID: 294353535}
+  pauseButton: {fileID: 2099060471}
   scoreText: {fileID: 60488531}
   FinalScoreText: {fileID: 1515227529}
 --- !u!4 &1627221477
@@ -4123,7 +4124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2099060472
 RectTransform:
   m_ObjectHideFlags: 0
