@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     public float gameSpeed { get; private set; }
 
     [SerializeField] private GameObject PlayerCharacter;
-    [SerializeField] private Transform positionPlayer;
+    [SerializeField] private Transform  positionPlayer;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject controllerButton;
+    [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text FinalScoreText;
 
@@ -97,5 +98,22 @@ public class GameManager : MonoBehaviour
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D6");
+    }
+
+    public void PauseMenu()
+    {
+        Time.timeScale = 0f;
+
+        controllerButton.SetActive(false);
+        pauseMenuPanel.SetActive(true);
+
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+
+        controllerButton.SetActive(true);
+        pauseMenuPanel.SetActive(false);
     }
 }
