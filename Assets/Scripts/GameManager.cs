@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject controllerButton;
     [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject StartMenu;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text FinalScoreText;
 
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         obstacleGenerator = FindObjectOfType<Obstacle_Generator>();
-        NewGame();
+        Time.timeScale = 0f;
     }
 
     public void NewGame()
@@ -115,5 +116,13 @@ public class GameManager : MonoBehaviour
 
         controllerButton.SetActive(true);
         pauseMenuPanel.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        NewGame();
+        Time.timeScale = 1f;
+
+        StartMenu.SetActive(false);
     }
 }
