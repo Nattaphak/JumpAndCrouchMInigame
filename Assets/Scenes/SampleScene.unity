@@ -3955,8 +3955,8 @@ MonoBehaviour:
   pauseButton: {fileID: 1392377649}
   scoreText: {fileID: 60488531}
   FinalScoreText: {fileID: 1515227529}
-  SoundOn: {fileID: 21300000, guid: 4c82a33505d2acd4ea78b8bca273eb0f, type: 3}
-  SoundOff: {fileID: 21300000, guid: 103f1a4bc58a7de4a83f96890138ea5a, type: 3}
+  SoundOn: {fileID: 21300000, guid: ec0b88906a44252468395327e38f45bd, type: 3}
+  SoundOff: {fileID: 21300000, guid: 3e1e9d6f781b5084ca9028595e8719b5, type: 3}
   image: {fileID: 560128310}
   BgSound: {fileID: 1811525197}
 --- !u!4 &1627221477

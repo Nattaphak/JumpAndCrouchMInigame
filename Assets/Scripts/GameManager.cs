@@ -81,8 +81,12 @@ public class GameManager : MonoBehaviour
         pauseButton.SetActive(true);
         controllerButton.SetActive(true);
 
-        BgSound.Stop();
-        BgSound.Play();
+        if (!soundtoggle)
+        {
+            BgSound.Stop();
+            BgSound.Play();
+        }
+        
 
         gameOverPanel.SetActive(false);
     }
@@ -99,6 +103,7 @@ public class GameManager : MonoBehaviour
         obstacleGenerator.gameObject.SetActive(false);
 
         FinalScoreText.text = Mathf.FloorToInt(score).ToString("D6");
+        BgSound.Stop();
         gameOverPanel.SetActive(true);
 
     }
