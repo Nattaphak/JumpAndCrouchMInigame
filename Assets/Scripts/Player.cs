@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField] public Animator anim;
     [SerializeField] private float jumpForce;
     [SerializeField] private Rigidbody2D RB;
+    [SerializeField] private AudioSource JumpSound;
+    [SerializeField] private AudioSource FailSound;
+
     public bool isGrounded = false;
     public bool isJump = false;
 
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
     {
         if (isGrounded == true)
         {
+            JumpSound.Play();
             RB.AddForce(Vector2.up * jumpForce);
             isGrounded = false;
         }
@@ -66,6 +70,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            FailSound.Play();
             GameManager.Instance.GameOver();
         }
     }
