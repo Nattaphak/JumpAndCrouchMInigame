@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public float initialGameSpeed = 5f;
     public float gameSpeedIncrease = 0.1f;
     public float gameSpeed { get; private set; }
+    
+    private bool soundtoggle = false;
 
     [SerializeField] private GameObject PlayerCharacter;
     [SerializeField] private Transform  positionPlayer;
@@ -21,6 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text FinalScoreText;
+
+    [SerializeField] private Sprite SoundOn;
+    [SerializeField] private Sprite SoundOff;
+    [SerializeField] private Image image;
+    [SerializeField] private AudioSource BgSound;
 
     private Obstacle_Generator obstacleGenerator;
 
@@ -50,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         obstacleGenerator = FindObjectOfType<Obstacle_Generator>();
         Time.timeScale = 0f;
+        image.sprite = SoundOn;
     }
 
     public void NewGame()
@@ -72,6 +80,9 @@ public class GameManager : MonoBehaviour
         obstacleGenerator.gameObject.SetActive(true);
         pauseButton.SetActive(true);
         controllerButton.SetActive(true);
+
+        BgSound.Stop();
+        BgSound.Play();
 
         gameOverPanel.SetActive(false);
     }
@@ -128,5 +139,21 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         StartMenu.SetActive(false);
+    }
+
+    public void SoundToggleButton()
+    {
+        if(!soundtoggle)
+        {
+            soundtoggle = true;
+            image.sprite = SoundOff;
+            BgSound.Pause();
+        }
+        else
+        {
+            soundtoggle = false;
+            image.sprite = SoundOn;
+            BgSound.Play();
+        }
     }
 }
